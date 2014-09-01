@@ -33,6 +33,7 @@ gem "pry"
 gem "pry-rails"
 gem "factory_girl_rails"
 gem "ffaker"
+gem "haml-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
