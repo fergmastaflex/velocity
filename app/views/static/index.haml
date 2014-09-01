@@ -10,13 +10,13 @@
     %main{:role => "main"}
       .large-6.large-centered.columns
         %h1{:style => "text-align:center;"} Velocity
-      .authform
-        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          = devise_error_messages!
-          %h4 Speed up your workflow
-          = f.input :email, :autofocus => true, class: 'form-control'
-          = f.input :password, class: 'form-control'
-          = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-          = f.submit 'Sign in', :class => 'button tiny'
-          OR
-          =link_to "Need an account?", new_user_registration_path, :class => 'button tiny'
+        .authform
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            = devise_error_messages!
+            %h4 Speed up your workflow
+            = f.input :email, :autofocus => true, class: 'form-control'
+            = f.input :password, class: 'form-control'
+            = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+            = f.submit 'Sign in', :class => 'button tiny'
+            OR
+            =link_to "Need an account?", new_user_registration_path, :class => 'button tiny'
