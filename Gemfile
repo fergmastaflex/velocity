@@ -27,6 +27,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'rspec-rails', '~> 3.0.0'
+gem "better_errors"
+gem "binding_of_caller"
+gem "pry"
+gem "pry-rails"
+gem "factory_girl_rails"
+gem "ffaker"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
