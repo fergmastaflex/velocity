@@ -6,8 +6,10 @@
     %title= content_for?(:title) ? yield(:title) : "foundation-rails"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     =render 'layouts/navigation'
-    = yield
-    = javascript_include_tag "application"
+    .row
+      %main{:role => "main"}
+        = yield
