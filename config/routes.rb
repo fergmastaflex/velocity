@@ -4,7 +4,15 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  authenticated :user do
+    root :to => 'home#index', :as => "authenticated_root"
+  end
+  unauthenticated do
+    devise_scope :user do
+      root to: "static#index", as: :unauthenticated_root
+    end
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
