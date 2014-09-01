@@ -10,11 +10,14 @@
   %section.top-bar-section
     / Right Nav Section
     %ul.right
-      %li.has-dropdown
-        %a{:href => "#"} Right Button Dropdown
-        %ul.dropdown
-          %li
-            %a{:href => "#"} First link in dropdown
+      -if user_signed_in?
+        %li
+          =link_to 'Logout', destroy_user_session_path, :method=>'delete'
+      -else
+        %li
+          =link_to 'Sign in', new_user_session_path
+        %li
+          =link_to 'Create Account', new_user_registration_path
     / Left Nav Section
     %ul.left
       %li
