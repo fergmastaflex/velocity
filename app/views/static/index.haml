@@ -20,3 +20,5 @@
             = f.submit 'Sign in', :class => 'button tiny'
             OR
             =link_to "Need an account?", new_user_registration_path, :class => 'button tiny'
+
+    =link_to "Sign in with github", user_omniauth_authorize_path(:github)
