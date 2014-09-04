@@ -28,3 +28,4 @@ gem 'sidetiq'
 gem 'devise'
 gem 'omniauth-github'
 gem 'figaro', '~> 0.7.0'
+gem "github_api"
