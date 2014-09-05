@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   def index
     @github = Github.new oauth_token: current_user.token
-    ones = @github.issues.list(state: 'open', labels: '*').count
-    twos = @github.issues.list(state: 'open', labels: '**').count
-    threes = @github.issues.list(state: 'open', labels: '***').count
     closed_ones = @github.issues.list(state: 'closed', labels: '*', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z").count
     closed_twos = @github.issues.list(state: 'closed', labels: '**', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z").count
     closed_threes = @github.issues.list(state: 'closed', labels: '***', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z").count
