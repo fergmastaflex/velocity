@@ -3,7 +3,7 @@ class Repo < ActiveRecord::Base
 
   def total_this_week(repo_name,user)
     github = Github.new oauth_token: user.token
-    owner = github.repos.list.select{|x| x.name == 'subconnect'}.first.owner.login
+    owner = github.repos.list.select{|x| x.name == repo_name}.first.owner.login
     ones = github.issues.list(state: 'closed',user: owner, repo: self.name, labels: '*', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z", assignee: user.username).count
     twos = github.issues.list(state: 'closed',user: owner, repo: self.name, labels: '**', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z", assignee: user.username).count
     threes = github.issues.list(state: 'closed',user: owner, repo: self.name, labels: '***', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z", assignee: user.username).count

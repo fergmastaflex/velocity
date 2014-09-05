@@ -1,4 +1,5 @@
 =simple_form_for @repo do |f|
   =f.input :name, collection: @repo_list
   =f.input :weekly_goal, as: :string
-  =f.button :submit
+  =f.button :submit, class: 'button'
+  =link_to "Cancel", authenticated_root_path, class: 'button'
