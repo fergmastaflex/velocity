@@ -1,8 +1,9 @@
-%h1 This is the home page
+=link_to "Add a repo", new_repo_path, class: 'button'
 
-=link_to "Add a repo", new_repo_path
-
-.progress.alert{:class => "[small-# large-#] [secondary success] [radius round]"}
-  %span.meter{:style => "width: #{number_to_percentage(@percent_complete, precision: 2)}"}
+-@repos.each do |r|
+  %h2=r.name
+  %h4 #{r.total_this_week(current_user).to_i} out of #{r.weekly_goal} points this week
+  .progress.alert{:class => "[small-# large-#] [secondary success] [radius round]"}
+    %span.meter{:style => "width: #{number_to_percentage((r.total_this_week(current_user) / r.weekly_goal)*100, precision: 2)}"}
 
   

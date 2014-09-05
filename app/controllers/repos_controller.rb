@@ -1,13 +1,12 @@
 class ReposController < ApplicationController
   def new
-    @repo = current_user.repos.new
+    @repo = Repo.new
     @github = Github.new oauth_token: current_user.token
     @repo_list = @github.repos.list.collect(&:name)
   end
 
   def create
-    @repo = Repo.new(repo_params)
-
+    @repo = current_user.repos.new(repo_params)
     if @repo.save
       redirect_to authenticated_root_path, notice: 'You just added a repo!'
     else
