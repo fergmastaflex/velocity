@@ -1,0 +1,4 @@
+=simple_form_for @repo do |f|
+  =f.input :name, collection: @repo_list
+  =f.input :weekly_goal, as: :string
+  =f.button :submit
