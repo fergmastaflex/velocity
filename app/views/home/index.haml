@@ -1,5 +1,6 @@
 %h1 This is the home page
 
--@github.repos.list.each do |r|
-  %p=r.name
+.progress.alert{:class => "[small-# large-#] [secondary success] [radius round]"}
+  %span.meter{:style => "width: #{number_to_percentage(@percent_complete, precision: 2)}"}
+
   
