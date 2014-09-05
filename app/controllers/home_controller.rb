@@ -4,11 +4,11 @@ class HomeController < ApplicationController
     ones = @github.issues.list(state: 'open', labels: '*').count
     twos = @github.issues.list(state: 'open', labels: '**').count
     threes = @github.issues.list(state: 'open', labels: '***').count
-    closed_ones = @github.issues.list(state: 'closed', labels: '*', since: "#{Time.now.beginning_of_week.strftime('%F')}T00:00:00Z").count
-    closed_twos = @github.issues.list(state: 'closed', labels: '**', since: "#{Time.now.beginning_of_week.strftime('%F')}T00:00:00Z").count
-    closed_threes = @github.issues.list(state: 'closed', labels: '***', since: "#{Time.now.beginning_of_week.strftime('%F')}T00:00:00Z").count
+    closed_ones = @github.issues.list(state: 'closed', labels: '*', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z").count
+    closed_twos = @github.issues.list(state: 'closed', labels: '**', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z").count
+    closed_threes = @github.issues.list(state: 'closed', labels: '***', since: "#{Time.now.beginning_of_week(:monday).strftime('%F')}T00:00:00Z").count
     @total_pending = (ones + twos + threes).to_d
-    @total_done_this_week = (closed_ones + closed_twos + closed_threes).to_d
+    @total_done_this_week = (closed_ones + (closed_twos * 2) + (closed_threes * 3)).to_d
     #weekly goal to be a project specific thing? until then, i'll do 15
     @percent_complete = (@total_done_this_week.to_d / 15.to_d) * 100
   end
