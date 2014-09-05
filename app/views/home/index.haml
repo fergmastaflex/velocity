@@ -1,9 +1,8 @@
-=link_to "Add a repo", new_repo_path, class: 'button'
-
 -@repos.each do |r|
-  %h2=r.name
-  %h4 #{r.total_this_week(current_user).to_i} out of #{r.weekly_goal} points this week
-  .progress.alert{:class => "[small-# large-#] [secondary success] [radius round]"}
-    %span.meter{:style => "width: #{number_to_percentage((r.total_this_week(current_user) / r.weekly_goal)*100, precision: 2)}"}
+  .panel
+    %h2=r.name
+    %h4 #{r.total_this_week(r.name,current_user).to_i} out of #{r.weekly_goal} points this week
+    .progress.success.round
+      %span.meter{:style => "width: #{number_to_percentage((r.total_this_week(r.name,current_user) / r.weekly_goal)*100, precision: 2)}"}
 
   
