@@ -3,6 +3,4 @@
     %h2=r.name
     %h4 #{r.total_this_week(r.name,current_user).to_i} out of #{r.weekly_goal} points this week
     .progress.success.round
-      %span.meter{:style => "width: #{number_to_percentage((r.total_this_week(r.name,current_user) / r.weekly_goal)*100, precision: 2)}"}
-
-  
+      %span.meter{:style => "width: #{number_to_percentage(r.percentage_complete(current_user), precision: 2)}"} 
